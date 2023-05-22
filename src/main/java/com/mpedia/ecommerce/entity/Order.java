@@ -25,7 +25,7 @@ public class Order {
   private Date date;
   @JoinColumn
   @ManyToOne
-  private String user;
+  private User user;
   private String addressOrder;
   private BigDecimal quantity;
   private BigDecimal ongkir;

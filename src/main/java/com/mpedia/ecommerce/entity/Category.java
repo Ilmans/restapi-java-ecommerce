@@ -2,9 +2,10 @@ package com.mpedia.ecommerce.entity;
 
 import java.io.Serializable;
 
-import org.springframework.data.annotation.Id;
+
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import lombok.Data;
 @Entity
 @Data

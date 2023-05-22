@@ -1,11 +1,14 @@
 package com.mpedia.ecommerce.entity;
 
+import java.io.Serializable;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import lombok.Data;
+
 @Entity
 @Data
-public class User {
+public class User implements Serializable {
   
   @Id
   private String id;

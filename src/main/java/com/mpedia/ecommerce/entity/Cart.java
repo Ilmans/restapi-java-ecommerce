@@ -1,5 +1,6 @@
 package com.mpedia.ecommerce.entity;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -13,12 +14,13 @@ import lombok.Data;
 
 @Entity
 @Data
-public class Cart {
+public class Cart implements Serializable {
   @Id
   private String id;
   @JoinColumn
   @ManyToOne
   private Product product;
+  @ManyToOne
   private User user;
   private Double quantity;
   private BigDecimal price;

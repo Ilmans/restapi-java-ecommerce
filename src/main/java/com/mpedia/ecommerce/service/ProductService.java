@@ -1,6 +1,7 @@
 package com.mpedia.ecommerce.service;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,5 +22,14 @@ public class ProductService {
 
   public Product findById(String id) {
     return productRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Product not found"));
+  }
+
+  public Product create(Product product) {
+    product.setId(UUID.randomUUID().toString());
+    return productRepository.save(product);
+  }
+
+  public void deleteById(String id) {
+    productRepository.deleteById(id);
   }
 }

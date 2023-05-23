@@ -26,22 +26,30 @@ public class UserService {
   }
 
   public User create(User user) {
-    // if (!StringUtils.hasText(user.getId())) {
-    //   throw new RequestException("Id is required");
-    // }
-    // if (userRepository.existsById(user.getId())) {
-    //   throw new RequestException("User already exists");
-    // }
-    // if (!StringUtils.hasText(user.getEmail())) {
-    //   throw new RequestException("Email is required");
-    // }
-    // if (userRepository.existsByEmail(user.getEmail())) {
-    //   throw new RequestException("Email already exists");
-    // }
+    if (!StringUtils.hasText(user.getId())) {
+      throw new RequestException("Id is required");
+    }
+    if (userRepository.existsById(user.getId())) {
+      throw new RequestException("User already exists");
+    }
+    if (!StringUtils.hasText(user.getEmail())) {
+      throw new RequestException("Email is required");
+    }
+    if (userRepository.existsByEmail(user.getEmail())) {
+      throw new RequestException("Email already exists");
+    }
+    user.setIsActive(true);
     return userRepository.save(user);
   }
 
   public User edit(User user) {
+    if(!StringUtils.hasText(user.getId())){
+      throw new RequestException("username required");
+    }
+    if(!StringUtils.hasText(user.getEmail())){
+      throw new RequestException("Email required");
+    }
+    user.setIsActive(true);
     return userRepository.save(user);
   }
 
